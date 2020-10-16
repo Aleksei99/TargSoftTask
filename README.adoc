@@ -1,0 +1,19 @@
+== Running Application
+
+Firstly, if you need, change a DEFAULT_FILE_PATH in App.class to the location of your CSV file
+or specify the path during program execution by typing "n". Use `mvn` at the command line like this:
+
+[source,sh]
+----
+mvn clean package
+----
+
+Once the project is built, you can run the executable JAR file from the project:
+
+[source,sh]
+----
+java -jar target/TargSoftTask-1.0-SNAPSHOT.jar
+----
+
+Once the application has started,
+enter the required data and observe the result.

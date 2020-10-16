@@ -15,15 +15,26 @@ import java.util.Scanner;
 
 public class App {
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    //Specify the path to your file
+    private static final String DEFAULT_FILE_PATH = "C:\\Users\\User\\Desktop\\data.csv";
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     public static void main(String[] args) throws IOException {
 
-        //Specify the path to your file
-        String file = "C:\\Users\\User\\Desktop\\data.csv";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(">> Use default file path?: y/n ");
+        String answer = scanner.nextLine();
+        String filePath;
+        if (answer.equals("n")) {
+            System.out.println(">> Enter new file path: ");
+            filePath = scanner.nextLine();
+        } else {
+            filePath = DEFAULT_FILE_PATH;
+        }
+
         List<Transaction> transactions = new ArrayList<>();
         CsvToBean csv = new CsvToBean();
-        CSVReader csvReader = new CSVReader(new FileReader(file), ',', '"', 1);
+        CSVReader csvReader = new CSVReader(new FileReader(filePath), ',', '"', 1);
         List list = csv.parse(setColumnMapping(), csvReader);
         for (Object object : list) {
             TransactionCsv transactionCsv = (TransactionCsv) object;
