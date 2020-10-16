@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Report {
     private int numberOfTransactions;
     private BigDecimal averageTransactionValue;
